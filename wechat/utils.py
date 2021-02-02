@@ -23,7 +23,8 @@ def img_download(url, name):
 def get_access_token(appid, secret):
     '''获取access_token,100分钟刷新一次'''
 
-    url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={}&secret={}'.format(appid, secret)
+    url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={}&secret={}'.format(appid,
+                                                                                                           secret)
     r = requests.get(url)
     parse_json = json.loads(r.text)
     global token
@@ -40,5 +41,6 @@ def img_upload(mediaType, name):
     r = requests.post(url, files=files)
     parse_json = json.loads(r.text)
     return parse_json['media_id']
+
 
 get_access_token(app_id, secret)
